@@ -7,7 +7,7 @@ import csv
 import platform
 import logging
 import sys
-from autoetlm import f0
+import charset_normalizer
 if platform.system()=='Windows':
 	os.system('cls')
 else:
@@ -45,7 +45,20 @@ try:
 		def nomecoluna(self,*args):
 				return i
 	c1=C1()
-# #######################################################
+########################################################
+	def f0():
+		l1=[]
+		for x in v:
+			with open(x,'rb') as f1:
+				data=f1.read()
+				x1=charset_normalizer.detect(data)
+				l1.append(data.decode(x1['encoding']))
+		for y in l1:
+			if ';' in y:
+				return ';'
+			else:
+				return ','
+########################################################
 	if platform.system()=='Windows':
 		os.chdir(u+'\x5c')
 	else:
@@ -53,20 +66,20 @@ try:
 	for k in range(len(v)):
 		num_str=str(k)
 		with open(c1.a3[k],newline='',encoding='utf-8') as csvfile:
-					A=csv.reader(csvfile,delimiter=f'{f0()}')
-					for row in A:
-						pass
-						break						
+				A=csv.reader(csvfile,delimiter=f'{f0()}')
+				for row in A:
+					pass
+					break						
 		# print(row)
-					with open(f'{c1.a0+num_str}.sql','w') as f:
-						f.write(f'CREATE TABLE {c1.a1+num_str}(')
-						for j,i in enumerate(row):
-							i=unidecode.unidecode(i)
-							if j == len(row)-1:
-								f.write(f'"{c1.nomecoluna(i)}" {c1.a4});\n')
-							else:								
-									f.write(f'"{c1.nomecoluna(i)}" {c1.a4},\n')
-						f.write(f"COPY {c1.a1+num_str} FROM '/docker-entrypoint-initdb.d/{c1.a3[k]}' DELIMITER \'{f0()}\' CSV HEADER;\n")
+		with open(f'{c1.a0+num_str}.sql','w') as f:
+					f.write(f'CREATE TABLE {c1.a1+num_str}(')
+					for j,i in enumerate(row):
+						i=unidecode.unidecode(i)
+						if j == len(row)-1:
+							f.write(f'"{c1.nomecoluna(i)}" {c1.a4});\n')
+						else:								
+								f.write(f'"{c1.nomecoluna(i)}" {c1.a4},\n')
+					f.write(f"COPY {c1.a1+num_str} FROM '/docker-entrypoint-initdb.d/{c1.a3[k]}' DELIMITER \'{f0()}\' CSV HEADER;\n")
 except Exception as e:
     logging.error(f"Um erro ocorreu: {str(e)}")
 					
