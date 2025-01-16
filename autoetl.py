@@ -36,6 +36,7 @@ class C1:
 		self.a1='tabela'
 		self.a3=v
 		self.a4='text'
+		self.a5='db'
 	def nomecoluna(self,*args):
 		return i
 c1=C1()
@@ -65,6 +66,8 @@ for k in range(len(v)):
 			pass
 			break						
 	with open(f'{c1.a0+num_str}.sql','w') as f:
+		f.write(f'CREATE DATABASE {c1.a5+num_str};\n')
+		f.write(f'\c {c1.a5+num_str}\n')
 		f.write(f'CREATE TABLE {c1.a1+num_str}(')
 		for j,i in enumerate(row):
 			i=unidecode.unidecode(i)
@@ -72,6 +75,7 @@ for k in range(len(v)):
 				f.write(f'"{c1.nomecoluna(i)}" {c1.a4});\n')
 			else:								
 				f.write(f'"{c1.nomecoluna(i)}" {c1.a4},\n')
+		f.write(f'\d+ {c1.a1+num_str}\n')
 		f.write(f"COPY {c1.a1+num_str} FROM '/docker-entrypoint-initdb.d/{c1.a3[k]}' DELIMITER \'{f0()}\' CSV HEADER;\n")
 
 					
