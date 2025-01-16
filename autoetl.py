@@ -5,8 +5,7 @@ import os.path
 import unidecode
 import csv
 import platform
-import logging
-import sys
+from sqlalchemy import create_engine, text
 import charset_normalizer
 if platform.system()=='Windows':
 	os.system('cls')
@@ -58,25 +57,36 @@ if platform.system()=='Windows':
 	os.chdir(u+'\x5c')
 else:
 	os.chdir(u+'/')
-for k in range(len(v)):
-	num_str=str(k)
-	with open(c1.a3[k],newline='',encoding='utf-8') as csvfile:
-		A=csv.reader(csvfile,delimiter=f'{f0()}')
-		for row in A:
-			pass
-			break						
-	with open(f'{c1.a0+num_str}.sql','w') as f:
-		f.write(f'CREATE DATABASE {c1.a5+num_str};\n')
-		f.write(f'\c {c1.a5+num_str}\n')
-		f.write(f'CREATE TABLE {c1.a1+num_str}(')
-		for j,i in enumerate(row):
-			i=unidecode.unidecode(i)
-			if j == len(row)-1:
-				f.write(f'"{c1.nomecoluna(i)}" {c1.a4});\n')
-			else:								
-				f.write(f'"{c1.nomecoluna(i)}" {c1.a4},\n')
-		f.write(f'\d+ {c1.a1+num_str}\n')
-		f.write(f"COPY {c1.a1+num_str} FROM '/docker-entrypoint-initdb.d/{c1.a3[k]}' DELIMITER \'{f0()}\' CSV HEADER;\n")
+arqdir=list(enumerate(v))
+print(arqdir)
+p0=input('Arquivo *csv: ')
+p1=input('Datatype [o]riginal ou [p]adrão(texto): ')
+match p1:
+	case 'o':
+		df=pd.read_csv(c1.a3[int(p0)],sep=f'{f0()}')
+		engine=create_engine('postgresql+psycopg2://postgres:1234@localhost:5432/postgres')
+		with engine.connect() as conn:
+			df.to_sql(f'{c1.a1+p0}',engine,if_exists='replace',index=False)
+	case 'p':
+		for k in range(len(v)):
+			num_str=str(k)
+			with open(c1.a3[k],newline='',encoding='utf-8') as csvfile:
+				A=csv.reader(csvfile,delimiter=f'{f0()}')
+				for row in A:
+					pass
+					break						
+			with open(f'{c1.a0+num_str}.sql','w') as f:
+				f.write(f'CREATE DATABASE {c1.a5+num_str};\n')
+				f.write(f'\c {c1.a5+num_str}\n')
+				f.write(f'CREATE TABLE {c1.a1+num_str}(')
+				for j,i in enumerate(row):
+					i=unidecode.unidecode(i)
+					if j == len(row)-1:
+						f.write(f'"{c1.nomecoluna(i)}" {c1.a4});\n')
+					else:								
+						f.write(f'"{c1.nomecoluna(i)}" {c1.a4},\n')
+				f.write(f'\d+ {c1.a1+num_str}\n')
+				f.write(f"COPY {c1.a1+num_str} FROM '/docker-entrypoint-initdb.d/{c1.a3[k]}' DELIMITER \'{f0()}\' CSV HEADER;\n")
 
 					
 
