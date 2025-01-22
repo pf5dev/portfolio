@@ -1,1 +1,1 @@
-Prova de conceito para scripts em Python [ referente: i) tipos de dados; ii) estrutura de dados; iii) estruturas de repetição; iv) estruturas de decisão; v) módulos/métodos de classe; vi) funções; vi) POO ], com objetivo de prática acadêmica.
+Prova de conceito para scripts em Python [ referente: i) tipos de dados; ii) estrutura de dados; iii) estruturas de repetição; iv) estruturas de decisão; v) módulos; vi) funções/métodos de classe; vi) POO ], com objetivo de ser autodidata.
