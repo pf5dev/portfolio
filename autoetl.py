@@ -34,8 +34,7 @@ class C1:
 		self.a3=v
 		self.a4='text'
 		self.a5='db'
-		self.a6='text'
-		self.a7='numeric'
+		self.a6='numeric'
 c1=C1()
 ########################################################
 def f0():
@@ -62,16 +61,19 @@ for k in range(len(v)):
 	l0=df.dtypes.tolist()
 	l1=list(zip(lc,l0))
 	with open(f'{c1.a0+num_str}.sql','w') as f:
-		f.write(f'CREATE DATABASE {c1.a5+num_str};\n')
-		f.write(f'\c {c1.a5+num_str}\n')
 		f.write(f'CREATE TABLE {c1.a1+num_str}(')
-		for j,i in l1:
-			j=unidecode.unidecode(j)
-			if i=='object':
-				f.write(f'"{j}" {c1.a6},\n')
-			else:
-				f.write(f'"{j}" {c1.a7},\n')
-		f.write(f'\d+ {c1.a1+num_str}\n')
+		for n in range(len(l1)):
+			match n:
+				case 9:
+					if l1[n][1]=='object':
+						f.write(f'"{l1[n][0]}" {c1.a4});\n')
+					else:
+						f.write(f'"{l1[n][0]}" {c1.a6});\n')
+				case _:
+					if l1[n][1]=='object':
+						f.write(f'"{l1[n][0]}" {c1.a4},\n')
+					else:
+						f.write(f'"{l1[n][0]}" {c1.a6},\n')
 		f.write(f"COPY {c1.a1+num_str} FROM '/docker-entrypoint-initdb.d/{c1.a3[k]}' DELIMITER \'{f0()}\' CSV HEADER;\n")
 
 					

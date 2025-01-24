@@ -9,7 +9,7 @@
     <title>Curriculum Vitae</title>
     <style>
         p.topico {font-family: Roboto, sans-serif; font-size: 18px;}
-        p.dadosn {font-family: Roboto, sans-serif; font-size: 20px;}
+        p.dadosn {font-family: Roboto, sans-serif; font-size: 22px;}
         p.topicohp {font-family: Roboto, sans-serif; font-size: 16px;}
         ul.topicol {font-family: Roboto, sans-serif; font-size: 16px;}
         p.dadosn {text-align: center;}
@@ -20,28 +20,76 @@
         p.topicohp {padding-right: 50px;}
         ul.topicol {padding-left: 50px;}
         p.etc {width: 100px; margin:auto;}
-        .centralizadoc {text-align: center;}
-        .alterarfonte {font-family: Roboto, sans-serif; font-size: 16px;}
-        #contato {font-family: Roboto, sans-serif; font-size: 20px;}
+        p.contato {font-family: Roboto, sans-serif; font-size: 18px;}
+        p.contato {text-align: center;}
+        table, th, td {border: 1px solid black; border-collapse: collapse; margin: 0 auto;font-family: Roboto, sans-serif; font-size: 16px;}
     </style>
 </head>
 <body>
 <p class="dadosn"><b>Paulo Alexandre Fonseca</b></p>
-<div class="centralizadoc">
-<p id="contato"></p>
-<p onclick="document.getElementById('contato').innerHTML='<b><mark>11 98190-5876 / pauloafonseca14@outlook.com</mark></b>'" class="alterarfonte"><b>clique para contato</b></p>
-</div>
-<p class="topico"><b>Objetivo:</b><mark> Desenvolvedor Júnior.</mark></p>
+<p class="contato"><b>clique para contato</b></p>
+    <script>
+        document.getElementsByClassName("contato")[0].onclick=function(){this.innerHTML="<mark>pauloafonseca14@outlook.com / 11 98190-5876</mark>";}
+        document.getElementsByClassName("contato")[0].style.cursor = "pointer"
+    </script>
+<p class="topico"><b>Cargo/Função:</b><mark> Desenvolvedor Júnior DevOps/FullStack.</mark></p>
 <p class="topico"><b>Escolaridade:</b> <mark>Cursando Graduação em Tecnologia Análise e Desenvolvimento de Sistemas.</mark></p>
 <p class="topico"><b>Idioma:</b> Inglês para leitura.</p>
 <p class="topico"><b>Histórico Profissional:</b></p>
-<p class="topicohp">Spassu Tecnologia e Serviços | Jul/2024 – data atual</p>
-<p class="topicohp">Atuando na gestão de incidentes no N3 Infra (Mensageria/SO). Tendo gerência no Microsoft 365 e Google WorkSpace para atendimento de requisições ou incidentes em sistema, relacionadas as demandas dos usuários. Eventualmente atuação também no monitoramento de links de internet (N3 Monitoramento) das unidades educacionais. Vivência com Zabbix/Grafana, GUI Usuários e Computadores para acesso a recursos do AD On-Premisse.
+<p class="topicohp"><ins>Spassu Tecnologia e Serviços | Jul/2024 – data atual</ins></p>
+<p class="topicohp">Atuando na gestão de incidentes para Mensageria/SO. Tendo gerência no Microsoft 365 e Google WorkSpace para atendimento de requisições ou incidentes em sistema, relacionadas as demandas dos usuários. Eventualmente atuação também no monitoramento de links de internet. Vivência com Zabbix/Grafana, GUI Usuários e Computadores para acesso a recursos do AD On-Premisse. Desenvolvimento de scripts em Python usando uma <mark>abordagem</mark> similar a <mark>DevOps</mark>, com a finalidade de <mark>otimizar</mark> aspectos do <mark>fluxo operacional</mark> diário:
 </p>
-<p class="topicohp"> CentralIT | Jun/2021 – Jul/2024</p>
-<p class="topicohp">Exercido função para N2 Field Service, N2 Suporte On Site, N2 Ticket Manager, N3 Gestão de Incidentes (Mensageria/SO). Para qualquer função exercida,  atendimento de requisições ou incidentes em sistema, relacionadas as demandas dos usuários.</p>
+<table style="width:80%">
+    <tr>
+        <th colspan="4"><a href="https://github.com/pf5dev/portfolio" target="_blank">GitHub Portfólio</a></th>
+    </tr>
+    <tr>
+        <th>nome script</th>
+        <th>input</th>
+        <th>output</th>
+        <th>ambiente de produção</th>
+    </tr>
+    <tr>
+        <td style="text-align: center;">carimbo5.py</td>
+        <td style="text-align: center;">*.CSV arquivo</td>
+        <td style="text-align: center;">document *.TXT</td>
+        <td style="text-align: center;">sim</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">swapcase.py</td>
+        <td style="text-align: center;">string</td>
+        <td style="text-align: center;">string formatada</td>
+        <td style="text-align: center;">sim</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">pwdgen.py</td>
+        <td style="text-align: center;">string</td>
+        <td style="text-align: center;">*.TXT arquivo</td>
+        <td style="text-align: center;">sim</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">webscraping.py</td>
+        <td style="text-align: center;">*.HTML arquivo</td>
+        <td style="text-align: center;">*.CSV arquivo</td>
+        <td style="text-align: center;">sim</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">comparar_csv.py</td>
+        <td style="text-align: center;">*.CSV arquivo</td>
+        <td style="text-align: center;">*.CSV arquivo</td>
+        <td style="text-align: center;">sim</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">autoetl.py</td>
+        <td style="text-align: center;">*.CSV arquivo</td>
+        <td style="text-align: center;">*.SQL script</td>
+        <td style="text-align: center;">sim</td>
+    </tr>
+</table>
+<p class="topicohp"><ins>CentralIT | Jun/2021 – Jul/2024</ins></p>
+<p class="topicohp">Exercido função para N2 Field Service, N2 Suporte On Site (hardware/software), N2 Ticket Manager [acompanhamento de técnicos em Field Service (atribuição/delegação e priorização de tickets, definição de rotas) com um procedimento similar a Kanban]. Para qualquer função exercida,  atendimento de requisições ou incidentes em sistema, relacionadas as demandas dos usuários.</p>
 <p class="etc">. . .    . . .   . . .</p>
-<p class="topico"><b><mark>Cursos/Atividades extra curricular</mark></b></p>
+<p class="topico"><b>Cursos extra curricular:</b></p>
 <ul class="topicol">
     <li>ITIL4 Foundations</li>
     <li>Python for Data Science, AI & Development</li>
@@ -50,15 +98,12 @@
     <li>Understanding Basic SQL Syntax</li>
     <li>Scrum Overview</li>
 </ul>
-<p class="topico"><a href="https://github.com/pf5dev/portfolio"><b>GitHub Portfólio: Prova de conceito para linguagem Python referente:</b></a></p>
+<p class="topico"><b>Conhecimento extra:</b></p>
 <ul class="topicol">
-<li>tipos de dados</li>
-<li>estrutura de dados</li>
-<li>estruturas de repetição</li>
-<li>estruturas de decisão</li>
-<li>módulos</li>
-<li>funções/métodos de classe</li>
-<li>POO</li>
+    <li>SO Linux</li>
+    <li>Git</li>
+    <li>noção SGBD PostgreSQL (DDL, DML, DQL)</li>
+    <li>noção Docker Container (docker compose)</li>
 </ul>
 </body>
 </html>
