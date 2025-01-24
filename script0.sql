@@ -1,14 +1,11 @@
-CREATE DATABASE db0;
-\c db0
-CREATE TABLE tabela0("name" text,
-"id" numeric,
-"nametype" text,
-"recclass" text,
-"mass (g)" numeric,
-"fall" text,
-"year" numeric,
-"reclat" numeric,
-"reclong" numeric,
-"GeoLocation" text);
-\d+ tabela0
-COPY tabela0 FROM '/docker-entrypoint-initdb.d/Meteorite_Landings.csv' DELIMITER ',' CSV HEADER;
+CREATE TABLE tabela0("PuzzleId" text,
+"FEN" text,
+"Moves" text,
+"Rating" numeric,
+"RatingDeviation" numeric,
+"Popularity" numeric,
+"NbPlays" numeric,
+"Themes" text,
+"GameUrl" text,
+"OpeningTags" text);
+COPY tabela0 FROM '/docker-entrypoint-initdb.d/lichess_db_puzzle.csv' DELIMITER ',' CSV HEADER;
